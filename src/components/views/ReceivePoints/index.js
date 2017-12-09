@@ -11,7 +11,7 @@ import { Views } from 'common/constants';
 @observer
 export class ReceivePoints extends React.Component {
 
-    static navigationOptions = { title: 'Receber pontos' };
+    static navigationOptions = { title: 'Receber moedas' };
 
     state = { copiedToClipboard: false };
 

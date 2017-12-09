@@ -23,7 +23,7 @@ export class ProductDetails extends React.Component {
                     <Image style={styles.image} source={{ uri: item.imgUri }} />
                     <View style={styles.contentContainer}>
                         <Text style={styles.productTitle}>{item.title.toUpperCase()}</Text>
-                        <Text style={styles.amount}>Por {item.amount} Pontos</Text>
+                        <Text style={styles.amount}>Por {item.amount} ETH</Text>
                         <View style={styles.characteristicsContainer}>
                             <Text style={styles.characteristicsTitle}>CARACTERÍSTICAS GERAIS</Text>
                             <View style={styles.divider} />
@@ -31,7 +31,7 @@ export class ProductDetails extends React.Component {
                         </View>
                     </View>
                 </ScrollView>
-                <Footer style={styles.redeemButton} label="Resgatar" onPress={this.onPressRedeem} />
+                <Footer style={styles.redeemButton} label="Comprar" onPress={this.onPressRedeem} />
             </Container>
         );
     }

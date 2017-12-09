@@ -11,7 +11,7 @@ import contacts from './mockedContacts';
 
 export class SelectDestinationAddress extends React.Component {
 
-    static navigationOptions = { title: 'Enviar pontos' };
+    static navigationOptions = { title: 'Enviar moedas' };
     
     state = { address: '', showCamera: false, contacts };
 

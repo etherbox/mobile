@@ -7,7 +7,7 @@ import { Views } from 'common/constants';
 
 export class SendPoints extends React.Component {
 
-    static navigationOptions = { title: 'Enviar pontos' };
+    static navigationOptions = { title: 'Enviar moedas' };
     
     state = { amount: '' };
 

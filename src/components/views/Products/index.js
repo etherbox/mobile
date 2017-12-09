@@ -27,7 +27,7 @@ export class Products extends React.Component {
                     </View>
                     <View style={styles.cardBottom}>
                         <Text style={styles.cardAmountLabel}>Por</Text>
-                        <Text style={styles.cardAmountValue}>{item.amount} Pts</Text>
+                        <Text style={styles.cardAmountValue}>{item.amount} ETH</Text>
                     </View>
                 </View>
             </TouchableWithoutFeedback>

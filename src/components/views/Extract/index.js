@@ -11,7 +11,7 @@ import ListItem from './ListItem';
 @observer
 export class Extract extends React.Component {
 
-    static navigationOptions = { title: 'Extrato de pontos' };
+    static navigationOptions = { title: 'Extrato' };
     
     componentDidMount() {
         this.loadHistory();

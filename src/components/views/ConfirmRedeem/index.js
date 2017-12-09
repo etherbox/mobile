@@ -12,7 +12,7 @@ import { General, Views } from 'common/constants';
 @observer
 export class ConfirmRedeem extends React.Component {
 
-    static navigationOptions = { title: 'Confirmação de Resgate' };
+    static navigationOptions = { title: 'Confirmação de compra' };
 
     state = { success: false, error: false };
     
