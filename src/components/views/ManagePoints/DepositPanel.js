@@ -6,30 +6,26 @@ import { Button, ExpandablePanel, SelectInput } from 'components/widgets';
 import { General } from 'common/constants';
 import ExchangeInput from './ExchangeInput';
 
-export default class SellPanel extends React.Component {
-    
+export default class BuyPanel extends React.Component {
+
     state = { fiat: 0, method: '', token: 0 };
 
     @autobind
-    onPressSell() {
-        const { fiat, method, token } = this.state;
-        console.log(method, fiat, token);
+    onPress() {
+        const { fiat, token } = this.state;
+        console.log(fiat, token);
     }
 
     render() {
         return (
-            <ExpandablePanel title="Vender pontos">
+            <ExpandablePanel title="Depositar na poupança">
                 <View style={styles.container}>
-                    <Text>Forma de crédito</Text>
-                    <SelectInput
-                        options={General.CREDIT_METHODS}
-                        onValueChange={method => this.setState({ method })} />
                     <Text>Quantidade</Text>
                     <ExchangeInput
-                        fiatUnit="R$"
-                        tokenUnit="Pontos"
+                        fiatUnit="ETH"
+                        tokenUnit="ETH"
                         onChange={({ fiat, token }) => this.setState({ fiat, token })} />
-                    <Button title="Comprar" onPress={this.onPressSell} />
+                    <Button title="Depositar" onPress={this.onPress} />
                 </View>
             </ExpandablePanel>
         );
@@ -37,5 +33,8 @@ export default class SellPanel extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {}
+    container: {
+        flexDirection: 'column',
+        alignItems: 'stretch'
+    }
 });

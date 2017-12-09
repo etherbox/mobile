@@ -46,7 +46,7 @@ export class SendPoints extends React.Component {
             <View style={styles.container}>
                 <View style={styles.topContainer}>
                     <Text style={styles.txtAmount}>{this.state.amount || 0}</Text>
-                    <Text style={styles.subtitle}>pontos</Text>
+                    <Text style={styles.subtitle}>ETH</Text>
                 </View>
                 <View style={styles.bottomContainer}>
                     <NumberGrid onPressNumber={this.onPressNumber} />

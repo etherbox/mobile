@@ -20,7 +20,7 @@ export const CREDIT_METHODS = [
     { value: 'prepaid_card', label: 'Cartão pré-pago' }
 ];
 
-export const FIAT_TOKEN_RATE = 0.10;
+export const FIAT_TOKEN_RATE = 1;
 
 export const BLOCKCHAIN_NETWORK = (DEBUG) ? 'rinkeby' : 'mainnet'; // 'mainnet' for production and 'rinkeby' for development
 export const BLOCKCHAIN_DECIMALS = 18;
