@@ -1,0 +1,27 @@
+export const black                  = '#000000';
+export const darkGray               = '#1E1E1E';
+export const darkBlue               = '#27354A';
+export const gray                   = '#B0ADB8';
+export const lightBlue              = '#0C71B1';
+export const lightGray              = '#EFEFEF';
+export const white                  = '#FFFFFF';
+export const chambray               = '#4E547D'; // topbar
+export const purple                 = '#434772'; // bgTop
+export const pink                   = '#A8545D'; // bgBottom
+export const almond                 = '#8F7D72';
+export const antique                = '#BF8369';
+export const jellyBean              = '#487A91';
+export const zorba                  = '#A1968E';
+export const martini                = '#B5AAA3';
+export const raven                  = '#686F80';
+export const mobster                = '#80708A';
+export const rum                    = '#7E6D87';
+export const maverick               = '#C5B6C2';
+export const sanJuan                = '#344A6B';
+export const fuelYellow             = '#EBA71F';
+export const etonBlue               = '#99C09C';
+export const errorRed               = '#C50001';
+
+export const primary                = chambray;
+export const secondary              = white;
+export const statusBar              = primary;

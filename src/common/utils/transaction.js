@@ -1,0 +1,1 @@
+export const transactionDetailsURL = (txHash) => `https://ethplorer.io/tx/${txHash}`;
