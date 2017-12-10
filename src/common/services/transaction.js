@@ -21,8 +21,3 @@ export async function transfer(to, value) {
     value = ethers.utils.parseEther(String(value));
     return WalletStore.wallet.sendTransaction({ ...Transaction.OPTIONS, to, value });
 }
-
-export async function transferContract(to, value) {
-    value = ethers.utils.parseEther(String(value));
-    return WalletStore.contract.functions.transfer(to, value, Transaction.OPTIONS);
-}

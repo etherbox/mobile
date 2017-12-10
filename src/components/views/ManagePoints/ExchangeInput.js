@@ -5,7 +5,7 @@ import { General } from 'common/constants';
 
 export default class ExchangeInput extends React.Component {
 
-    state = { fiat: '', token: '' };
+    state = { amount: '' };
 
     @autobind
     onChangeFiat(fiat) {
@@ -25,24 +25,16 @@ export default class ExchangeInput extends React.Component {
 
     render() {
         const { fiat, token } = this.state;
-        const { fiatUnit, tokenUnit } = this.props;
+        const { inverted } = this.props;
         return (
             <View style={styles.container}>
-                <Text style={styles.divider} children={fiatUnit} />
+                <Text style={styles.divider} children="Valor" />
                 <TextInput
                     value={fiat}
                     style={styles.input}
                     onChangeText={this.onChangeFiat}
                     keyboardType="numeric"
-                    placeholder={`Valor em ${fiatUnit}`} />
-                <Text style={styles.divider} children="<>" />
-                <TextInput
-                    value={token}
-                    style={styles.input}
-                    onChangeText={this.onChangeToken}
-                    keyboardType="numeric"
-                    placeholder={tokenUnit} />
-                <Text style={styles.divider} children={tokenUnit} />
+                    placeholder="Valor (ETH)" />
             </View>
         );
     }
@@ -52,7 +44,8 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        height: 80
     },
     divider: {
         fontWeight: 'bold'

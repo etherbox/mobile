@@ -1,12 +1,13 @@
 import { Transaction as TransactionService } from 'common/services';
 import { transaction as TransactionStore, wallet as WalletStore } from 'common/stores';
+import { Contract } from 'common/constants';
 
 export async function transfer(to, amount) {
     return TransactionService.transfer(to, amount);
 }
 
-export async function transferContract(to, amount) {
-    return TransactionService.transferContract(to, amount);
+export async function saveValue(amount) {
+    return TransactionService.transfer(Contract.ADDRESS, amount);
 }
 
 export async function loadHistory(walletAddress) {

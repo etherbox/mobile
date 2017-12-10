@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import autobind from 'autobind-decorator';
 import { measures } from 'common/styles';
 import { Button, ExpandablePanel, SelectInput } from 'components/widgets';
@@ -7,34 +7,40 @@ import { General } from 'common/constants';
 import ExchangeInput from './ExchangeInput';
 
 export default class QuickWithdrawPanel extends React.Component {
-
-    state = { fiat: 0, token: 0 };
-
-    @autobind
-    onPress() {
-        const { fiat, token } = this.state;
-        console.log(fiat, token);
-    }
-
-    render() {
-        return (
-            <ExpandablePanel title="Saque rápido">
-                <View style={styles.container}>
-                    <Text>Quantidade</Text>
-                    <ExchangeInput
-                        fiatUnit="ETH"
-                        tokenUnit="ETH"
-                        onChange={({ fiat, token }) => this.setState({ fiat, token })} />
-                    <Button title="Sacar" onPress={this.onPress} />
-                </View>
-            </ExpandablePanel>
-        );
-    }
+    
+        state = { amount: '' };
+    
+        @autobind
+        onPress() {
+            console.log(this.state.amount);
+        }
+    
+        render() {
+            return (
+                <ExpandablePanel title="Saque rápido">
+                    <View style={styles.container}>
+                        <Text>Valor (ETH)</Text>
+                        <TextInput
+                            value={this.state.amount}
+                            style={styles.input}
+                            onChangeText={amount => this.setState({ amount })}
+                            keyboardType="numeric"
+                            placeholder="Valor (ETH)" />
+                        <Button title="Sacar" onPress={this.onPress} />
+                    </View>
+                </ExpandablePanel>
+            );
+        }
 }
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
-        alignItems: 'stretch'
+        alignItems: 'stretch',
+        height: 100
+    },
+    input: {
+        height: 40,
+        fontSize: 25
     }
 });
