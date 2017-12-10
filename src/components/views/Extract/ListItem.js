@@ -12,17 +12,15 @@ export default class ListItem extends React.Component {
     }
 
     get points() {
-        return WalletUtils.tokenDecimals(this.props.item.data);
+        return WalletUtils.tokenDecimals(this.props.item.value);
     }
 
     get from() {
-        const address = this.props.item.topics[1].split('x')[1].replace(/^0+(?!\.|$)/, '');
-        return `0x${address}`;
+        return `0x${this.props.item.from}`;
     }
     
     get to() {
-        const address = this.props.item.topics[2].split('x')[1].replace(/^0+(?!\.|$)/, '');
-        return `0x${address}`;
+        return `0x${this.props.item.to}`;
     }
 
     isSending() {
@@ -42,7 +40,7 @@ export default class ListItem extends React.Component {
                 </View>
             </View>
             <View style={styles.right}>
-                <Text style={styles.title}>{this.points} pontos</Text>
+                <Text style={styles.title}>{this.points} ETH</Text>
                 <Text style={styles.subtitle}>De: {this.from}</Text>
                 <Text style={styles.subtitle}>{this.timestamp}</Text>
             </View>
@@ -57,7 +55,7 @@ export default class ListItem extends React.Component {
                 </View>
             </View>
             <View style={styles.right}>
-                <Text style={styles.title}>{this.points} pontos</Text>
+                <Text style={styles.title}>{this.points} ETH</Text>
                 <Text style={styles.subtitle}>Para: {this.to}</Text>
                 <Text style={styles.subtitle}>{this.timestamp}</Text>
             </View>

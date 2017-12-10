@@ -40,7 +40,7 @@ export class Extract extends React.Component {
                     <FlatList
                         data={history}
                         refreshControl={<RefreshControl refreshing={loading} onRefresh={() => this.loadHistory()} />}
-                        keyExtractor={item => item.transactionHash}
+                        keyExtractor={item => item.hash}
                         renderItem={this.renderItem} />
                 </View>
             </View>

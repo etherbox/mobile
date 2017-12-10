@@ -4,9 +4,13 @@ import { Contract, General, Transaction } from 'common/constants';
 import { Wallet as WalletUtils } from 'common/utils';
 
 export async function getTransactionHistory(walletAddress) {
-    console.log(walletAddress);
+    const { status, data } = await axios.get(`${General.API}?module=account&action=txlist&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc`);
+    if (status == 200 && data.status == 1) return data.result;
+    else throw new Error('No results');
+}
+
+export async function getContractTransactionHistory(walletAddress) {
     walletAddress = WalletUtils.padStartHex(walletAddress).toLowerCase();
-    console.log(`${General.API}?module=logs&action=getLogs&fromBlock=0&toBlock=earliest&address=${Contract.ADDRESS}&topic0=${Transaction.OPERATION_TRANSFER_HASH}&topic1=${walletAddress}&topic2=${walletAddress}&topic1_2_opr=or`);
     const { status, data } = await axios.get(`${General.API}?module=logs&action=getLogs&fromBlock=0&toBlock=earliest&address=${Contract.ADDRESS}&topic0=${Transaction.OPERATION_TRANSFER_HASH}&topic1=${walletAddress}&topic2=${walletAddress}&topic1_2_opr=or`);
     if (status == 200 && data.status == 1) return data.result;
     else throw new Error('No results');
