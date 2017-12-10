@@ -24,13 +24,13 @@ export async function transfer(to, value) {
 
 export async function withdraw() {
     await WalletStore.contract.functions.withdrawalInitiate();
-    console.log("Withdraw initiated");
-    console.log("Waiting for 3 minutes");
-    return new Promise(resolve => setTimeout(async function() {
-        console.log("Requesting the withdraw");
-        const result = await WalletStore.contract.functions.withdrawalComplete();
-        console.log(result);
-        console.log("Money withdrawn");
-        resolve(result);
-    }, 240000));
+    // console.log("Withdraw initiated");
+    // console.log("Waiting for 3 minutes");
+    // return new Promise(resolve => setTimeout(async function() {
+    //     console.log("Requesting the withdraw");
+    //     const result = await WalletStore.contract.functions.withdrawalComplete();
+    //     console.log(result);
+    //     console.log("Money withdrawn");
+    //     resolve(result);
+    // }, 240000));
 }

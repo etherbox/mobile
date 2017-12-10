@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
 import { measures } from 'common/styles';
 import { Button, ExpandablePanel, SelectInput } from 'components/widgets';
+import { wallet as WalletStore } from 'common/stores';
 import { Wallet as WalletUtils } from 'common/utils';
 import { General } from 'common/constants';
 import ExchangeInput from './ExchangeInput';
@@ -19,8 +20,8 @@ export default class QuickWithdrawPanel extends React.Component {
     }
 
     @autobind
-    onPress() {
-        console.log(this.state.amount);
+    async onPress() {
+        await WalletStore.contract.functions.withdrawalComplete();
     }
 
     render() {

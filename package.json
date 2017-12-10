@@ -6,7 +6,7 @@
     "postinstall": "react-native upgrade && react-native link",
     "start": "react-native start",
     "test": "jest",
-    "android:build": "cd android && ./gradlew assembleDebug && cd .. && cp android/app/build/outputs/apk/app-debug.apk BitWallet.apk",
+    "android:build": "cd android && ./gradlew assembleDebug && cd .. && cp android/app/build/outputs/apk/app-debug.apk etherbox.apk",
     "android:bundle": "react-native bundle --dev false --platform android --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "android:clean": "cd android && ./gradlew clean && cd ..",
     "android:generate": "npm run android:bundle && npm run android:build",
