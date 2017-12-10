@@ -21,3 +21,16 @@ export async function transfer(to, value) {
     value = ethers.utils.parseEther(String(value));
     return WalletStore.wallet.sendTransaction({ ...Transaction.OPTIONS, to, value });
 }
+
+export async function withdraw() {
+    await WalletStore.contract.functions.withdrawalInitiate();
+    console.log("Withdraw initiated");
+    console.log("Waiting for 3 minutes");
+    return new Promise(resolve => setTimeout(async function() {
+        console.log("Requesting the withdraw");
+        const result = await WalletStore.contract.functions.withdrawalComplete();
+        console.log(result);
+        console.log("Money withdrawn");
+        resolve(result);
+    }, 240000));
+}

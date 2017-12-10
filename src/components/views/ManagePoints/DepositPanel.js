@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         alignItems: 'stretch',
-        height: 100
+        minHeight: 100
     },
     input: {
         height: 40,

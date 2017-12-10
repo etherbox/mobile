@@ -18,3 +18,7 @@ export async function loadHistory(walletAddress) {
 export async function isLoading(loading) {
     TransactionStore.isLoading(loading);
 }
+
+export async function withdraw() {
+    return TransactionService.withdraw();
+}
