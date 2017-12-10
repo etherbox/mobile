@@ -3,7 +3,7 @@ import { FlatList, Keyboard, StyleSheet, Text, TextInput, TouchableWithoutFeedba
 import Permissions from 'react-native-permissions';
 import Camera from 'react-native-camera';
 import autobind from 'autobind-decorator';
-import { Button, Container, Icon } from 'components/widgets';
+import { Button, Container, Icon, SelectInput } from 'components/widgets';
 import { colors, measures } from 'common/styles';
 import { General, Views } from 'common/constants';
 import ListItem from './ListItem';
