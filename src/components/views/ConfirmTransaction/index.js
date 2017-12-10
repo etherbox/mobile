@@ -17,7 +17,9 @@ export class ConfirmTransaction extends React.Component {
     state = { success: false, error: false };
     
     get balance() {
-        return WalletUtils.tokenDecimals(this.props.wallet.balance);
+        const { type } = this.props.navigation.state.params;
+        const balance = (type === 'current') ? this.props.wallet.balance : this.props.wallet.contractBalance;
+        return WalletUtils.tokenDecimals(balance);
     }
 
     get address() {
@@ -32,8 +34,13 @@ export class ConfirmTransaction extends React.Component {
     async onSend() {
         try {
             await Transaction.isLoading(true);
-            const realAmount = WalletUtils.expandTokenAmount(this.amount);
-            const txn = await Transaction.transfer(this.address, String(realAmount));
+            // const realAmount = WalletUtils.expandTokenAmount(this.amount);
+            const { type } = this.props.navigation.state.params;
+            if (type === 'current') {
+                await Transaction.transfer(this.address, this.amount);
+            } else {
+                await Transaction.transferContract(this.address, this.amount);
+            }
             this.setState({ success: true });
         } catch(e) {
             this.setState({ error: true });
@@ -81,13 +88,13 @@ export class ConfirmTransaction extends React.Component {
                         <View style={styles.subLayer}>
                             <Text style={styles.title}>DESTINATÁRIO</Text>
                             <Text style={styles.value}>{this.address}</Text>
-                            <Text style={styles.title}>PONTOS A ENVIAR</Text>
+                            <Text style={styles.title}>MOEDAS A ENVIAR</Text>
                             <Text style={styles.value}>{this.amount}</Text>
                         </View>
                     </View>
                     <View style={styles.bottomBox}>
                         <Text style={styles.balanceTitle}>Saldo disponível:</Text>
-                        <Text style={styles.balanceValue}>{WalletUtils.truncateBalance(this.balance)} pts</Text>
+                        <Text style={styles.balanceValue}>{WalletUtils.truncateBalance(this.balance)} ETH</Text>
                     </View>
                     {loading && <ActivityIndicator animating />}
                     {this.renderSuccessBox()}

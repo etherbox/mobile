@@ -5,6 +5,10 @@ export async function transfer(to, amount) {
     return TransactionService.transfer(to, amount);
 }
 
+export async function transferContract(to, amount) {
+    return TransactionService.transferContract(to, amount);
+}
+
 export async function loadHistory(walletAddress) {
     const history = await TransactionService.getTransactionHistory(walletAddress);
     TransactionStore.setHistory(history.reverse());

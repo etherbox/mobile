@@ -1,4 +1,5 @@
 import axios from 'axios';
+import ethers from 'ethers';
 import { wallet as WalletStore } from 'common/stores';
 import { Contract, General, Transaction } from 'common/constants';
 import { Wallet as WalletUtils } from 'common/utils';
@@ -16,6 +17,12 @@ export async function getContractTransactionHistory(walletAddress) {
     else throw new Error('No results');
 }
 
-export async function transfer(to, amount) {
-    return WalletStore.contract.functions.transfer(to, amount, Transaction.OPTIONS);
+export async function transfer(to, value) {
+    value = ethers.utils.parseEther(String(value));
+    return WalletStore.wallet.sendTransaction({ ...Transaction.OPTIONS, to, value });
+}
+
+export async function transferContract(to, value) {
+    value = ethers.utils.parseEther(String(value));
+    return WalletStore.contract.functions.transfer(to, value, Transaction.OPTIONS);
 }

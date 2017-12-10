@@ -13,7 +13,7 @@ export class SelectDestinationAddress extends React.Component {
 
     static navigationOptions = { title: 'Enviar moedas' };
     
-    state = { address: '', showCamera: false, contacts };
+    state = { type: 'current', address: '', showCamera: false, contacts };
 
     @autobind
     async onPressCamera() {
@@ -43,10 +43,10 @@ export class SelectDestinationAddress extends React.Component {
     @autobind
     onSend() {
         Keyboard.dismiss();
-        const { address } = this.state;
+        const { address, type } = this.state;
         if (!address) return;
-        const { state: { params: { amount } }, navigate } = this.props.navigation; //.state.params;
-        navigate(Views.CONFIRMTXN, { address, amount });
+        const { state: { params: { amount } }, navigate } = this.props.navigation;
+        navigate(Views.CONFIRMTXN, { address, amount, type });
     }
 
     renderCamera() {
@@ -89,12 +89,11 @@ export class SelectDestinationAddress extends React.Component {
                     </View>
                     <Button borderless title="Enviar" onPress={this.onSend} />
                 </View>
-                <View style={styles.bottomBox}>
-                    <FlatList
-                        data={this.state.contacts}
-                        keyExtractor={item => item.id}
-                        renderItem={this.renderContact} />
-                </View>
+                <Text style={styles.selectTitle}>Selecione a carteira</Text>
+                <SelectInput
+                    value={this.state.type}
+                    options={General.WALLET_OPTIONS}
+                    onValueChange={type => this.setState({ type })} />
             </Container>
         );
     }
@@ -162,5 +161,11 @@ const styles = StyleSheet.create({
         height: 200,
         borderWidth: 4,
         borderColor: 'green'
+    },
+    selectTitle: {
+        backgroundColor: 'transparent',
+        color: colors.white,
+        textAlign: 'center',
+        marginTop: measures.defaultMargin * 2
     }
 });
